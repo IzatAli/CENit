@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+    <p>Welcome to {{ title }}</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ducimus tempore pariatur, fugiat minima mollitia, ut enim asperiores est voluptatum recusandae cum, itaque culpa numquam nihil et. Sunt, hic numquam.</p>
+  </body>
+</html>
