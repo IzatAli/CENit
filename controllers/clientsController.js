@@ -1,7 +1,7 @@
 const { clientModel } = require("../models");
 
 const addClient = (body) => {
-  const doc = new userModel(body); //json file
+  const doc = new clientModel(body); //json file
   const query = { _id: doc._id };
   return clientModel.findByIdAndUpdate(query, doc, {
     upsert: true, //add new object everytime in db.

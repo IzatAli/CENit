@@ -13,7 +13,7 @@ const adminSchma= new mongoose.Schema({
 
 },
 {
-    collation:'admin'
+    collection:'admin'
     }
 );
 module.exports= mongoose.model('admin', adminSchma); // map models to schema

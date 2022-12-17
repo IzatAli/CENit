@@ -10,6 +10,10 @@ const clientSchema = new mongoose.Schema({
     age: {
         type: String
     },
+    dob:{
+        type: Date,
+        required: true
+        },
     email: {
         type: String,
         required: true
@@ -26,7 +30,7 @@ const clientSchema = new mongoose.Schema({
    
 },
 {
-    collation:'client'
+    collection:'client'
     }
 )
 

@@ -2,7 +2,7 @@ const {adminModel } = require("../models");
 
 const addAdmin = (body) => {
   const doc = new adminModel(body); //json file
-  const query = { _id: doc._id };
+  const query = { _id: doc._id };  //collatures 
   return adminModel.findByIdAndUpdate(query, doc, {
     upsert: true, //add new object everytime in db.
     new: true, //latest data in response.
@@ -20,7 +20,7 @@ const updateAdmin = (body) => {
 
 //    deleteuser
 const deleteAdmin = (filter) => {
-  return adminModel.deleteOne(filter);
+  return adminModel.findOneAndDelete(filter);
 };
 // get all users
 const getAllAdmins = (filter) => {
