@@ -7,6 +7,22 @@ const clientSchema = new mongoose.Schema({
     lastName: {
         type: String
     },
+    age: {
+        type: String
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type:String,
+        required: true
+        
+    },
+    cPassword: {
+        type: String,
+        required: true
+    }
    
 },
 {

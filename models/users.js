@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
   },
 },
 {
-collation:'users'
+collection:'users'
 }
 );
 module.exports = mongoose.model('users',userSchema);
