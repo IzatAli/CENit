@@ -56,9 +56,7 @@ const signUp = async (body) => {
 
 catch (ex) {
         return Promise.reject({error: ex})
-
-    }
-   
+    }  
 
     };
 
