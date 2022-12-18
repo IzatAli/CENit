@@ -3,12 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+//test routes
 const {
   adminRouter,
   userRouters,
   clientRouter
 } =require('./routes');
 
+// actual Routes
+const authMiddleware= require('./middlewares/authMiddleware')
 //database connection
 const mongoose = require('mongoose')
 
@@ -33,8 +36,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+//Actual Routes
+app.post('/signup', authMiddleware.userSignUp);
 //app.use('/', indexRouter);
+//Testing APIs
 app.use('/users', userRouters);
 app.use('/clients', clientRouter);
 app.use('/admins', adminRouter);

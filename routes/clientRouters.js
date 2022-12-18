@@ -46,7 +46,7 @@ router.delete("/:id", async function(req ,res,next){
   try {
     const filter = {_id: id};
     const result = await clientController.deleteClient(filter);
-    res.status(200).send('deleted successfully',result);
+    res.status(200).send('deleted successfully');
     
   } catch (error) {
     res.status(500).send(error);

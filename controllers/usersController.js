@@ -6,7 +6,7 @@ const addUser = (body) => {
   return userModel.findByIdAndUpdate(query, doc, {
     upsert: true, //add new object everytime in db.
     new: true, //latest data in response.
-  });
+  }).populate('userType.item');
 };
 
 const updateUser = (body) => {

@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const {adminController }= require('../controllers');
-const { addAdmin } = require('../controllers/adminController');
 /* GET users listing. */
 router.get('/',  async function(req, res, next) {
   //res.send('respond with a resource');
@@ -47,7 +46,7 @@ router.delete("/:id", async function(req ,res,next){
   try {
     const filter = {_id: id};
     const result = await adminController.deleteAdmin(filter);
-    res.status(200).send('deleted successfully',result);
+    res.status(200).send('deleted successfully');
     
   } catch (error) {
     res.status(500).send(error);

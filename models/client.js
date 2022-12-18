@@ -8,7 +8,7 @@ const clientSchema = new mongoose.Schema({
         type: String
     },
     age: {
-        type: String
+        type: Number
     },
     dob:{
         type: Date,
@@ -18,15 +18,15 @@ const clientSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    password: {
-        type:String,
-        required: true
+    // password: {
+    //     type:String,
+    //     required: true
         
-    },
-    cPassword: {
-        type: String,
-        required: true
-    }
+    // },
+    // cPassword: {
+    //     type: String,
+    //     required: true
+    // }
    
 },
 {

@@ -12,7 +12,7 @@ const addAdmin = (body) => {
 const updateAdmin = (body) => {
   // const doc=new userModel(body); //json file
   const query = { _id: body._id };
-  return adminModel.findByIdAndUpdate(query, body, {
+  return adminModel.findByIAndUpdate(query, body, {
     //    upsert:true,  //add new object everytime in db. no need.
     new: true, //latest data in response.
   });

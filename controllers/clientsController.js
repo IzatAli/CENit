@@ -20,7 +20,7 @@ const updateClient = (body) => {
 
 //    deleteuser
 const deleteClient = (filter) => {
-  return clientModel.deleteOne(filter);
+  return clientModel.findOneAndDelete(filter);
 };
 // get all users
 const getAllClient = (filter) => {
