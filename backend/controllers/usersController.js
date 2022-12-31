@@ -28,7 +28,7 @@ const getAllUsers = (filter) => {
 };
 // get single user
 const getUser = (filter) => {
-  return userModel.findOne(filter);
+  return userModel.findOne(filter).populate('userType.item');
 };
 
 module.exports = {

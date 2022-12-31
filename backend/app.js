@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const passport=require('passport');
+const { Strategy }= require('passport-local');
+
 //test routes
 const {
   adminRouter,
@@ -36,8 +39,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+/// verifing user Creditionals 
+passport.use(new Strategy((username, password, done)=>{
+  authMiddleware.executeLogin(username, password, done)
+
+}
+));
+
 //Actual Routes
 app.post('/signup', authMiddleware.userSignUp);
+app.post('/login',
+passport.initialize(),
+passport.authenticate('local',{
+  session:false,
+  scope:[]
+}),
+authMiddleware.generateToken,
+authMiddleware.respond
+);
 //app.use('/', indexRouter);
 //Testing APIs
 app.use('/users', userRouters);

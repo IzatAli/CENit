@@ -1,7 +1,37 @@
-const {
-signUp
-}= require('../beans/common');
+const {sign, verify}= require('jsonwebtoken');
+const { signUp }= require('../beans/common');
+const { usersController } = require('../controllers');
 
+const executeLogin =async(username, password,cb)=>{
+    try {
+        const filter = {userName:username, password: password};
+        const user= await usersController.getUser(filter) 
+        if (!user) {
+            return cb(null, false)
+        }
+    //    // console.log(user)
+        return cb(null, user);
+    } catch (error) {
+        return cb(error, false);
+    }
+};
+
+const generateToken = async(req, res,next)=>{
+    const user= req.user;
+    console.log(user);
+    const json ={
+        _id: user._id
+    };
+    const token= sign({user: json},'someSecretvalue');
+    req.token= token;
+    console.log(user);
+    next();
+}
+const respond = async(req, res,next)=>{
+    const user= req.user;
+    const result = {token: req.token, user: user.userType.item};
+    res.status(200).send(result);
+}
 const userSignUp = async (req , res, next) =>{
     const body = req.body;
     try {
@@ -13,5 +43,8 @@ const userSignUp = async (req , res, next) =>{
 
 };
  module.exports = {
-    userSignUp
+    userSignUp,
+    executeLogin,
+    generateToken,
+    respond
  }
