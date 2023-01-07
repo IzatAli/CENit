@@ -5,19 +5,17 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const passport=require('passport');
 const { Strategy }= require('passport-local');
-
+const inputMiddleware = require('./middlewares/inputMiddleware')
 //test routes
 const {
   adminRouter,
   userRouters,
   clientRouter
 } =require('./routes');
-
 // actual Routes
 const authMiddleware= require('./middlewares/authMiddleware')
 //database connection
-const mongoose = require('mongoose')
-
+const mongoose = require('mongoose');
 // var indexRouter = require('./routes/index');
 
 var app = express();
@@ -45,7 +43,8 @@ passport.use(new Strategy((username, password, done)=>{
 
 }
 ));
-
+//inputmiddleware
+app.use(inputMiddleware.handleOptions);
 //Actual Routes
 app.post('/signup', authMiddleware.userSignUp);
 app.post('/login',
