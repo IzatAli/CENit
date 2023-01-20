@@ -1,15 +1,21 @@
 import './App.css';
-import Navbar from './components/Navebar'
-import Form from './components/Form'
+ import Navbar from './components/Navebar'
+// import Form from './components/Form'
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import Login from './components/Login'
+import Signup from './components/Signup'
 function App() {
   return (
     <>
-    <div>
-      <Form />
-      <Navbar title="Cards" />
-      <Navbar Discription="This information is about Navbar" />
-
-    </div>
+    <BrowserRouter>
+    <Navbar />
+    <Routes>
+      <Route path='/' element={<Login />}/>
+      <Route path='/Signup' element={<Signup />}/>
+      <Route  />
+    </Routes>
+    </BrowserRouter>
+    
     </>
     
   );
